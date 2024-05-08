@@ -27,10 +27,11 @@ export const imageUpload = async (images) => {
         }
 
         
-        formData.append("upload_preset", "ADD VALUE HERE");
-        formData.append("cloud_name", "ADD VALUE HERE");
+        formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET);
+        formData.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
 
-        const res = await fetch("ADD CLOUDINARY IMAGE UPLOAD LINK HERE", {
+        // const res = await fetch("ADD CLOUDINARY IMAGE UPLOAD LINK HERE", {
+        const res = await fetch(process.env.REACT_APP_CLOUDINARY, {
             method: "POST",
             body: formData
         })
