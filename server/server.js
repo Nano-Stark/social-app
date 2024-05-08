@@ -39,7 +39,7 @@ app.use('/api', require('./routes/notifyRouter'));
 app.use('/api', require('./routes/messageRouter'));
 //#endregion
 
-app.use("ping", (req, res) => {
+app.use("/ping", (req, res) => {
   res.json({msg: "api endpoint working"})
 })
 
