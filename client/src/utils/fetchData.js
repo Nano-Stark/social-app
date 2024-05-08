@@ -1,5 +1,5 @@
 // import axios from 'axios';
-import axiosInstance from "axiosInstance"
+import axiosInstance from "./axiosInstance"
 
 export const getDataAPI = async (url,token) => {
     const res = await axiosInstance.get(`/api/${url}`,{
