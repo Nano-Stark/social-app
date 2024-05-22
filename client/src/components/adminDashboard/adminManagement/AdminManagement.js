@@ -1,7 +1,7 @@
 import React from 'react';
 import "../main/Main.css";
 import { useSelector } from "react-redux";
-import RegisterAdmin from "./RegisterAdmin";
+// import RegisterAdmin from "./RegisterAdmin";
 
 const AdminManagement = () => {
         const { auth } = useSelector((state) => state);
@@ -14,7 +14,7 @@ const AdminManagement = () => {
               <p>Welcome to your Admin Management</p>
             </div>
           </div>
-          <RegisterAdmin />
+          {/* <RegisterAdmin /> */}
         </div>
       </div>
     );
