@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { register } from '../redux/actions/authAction';
+import { register, registerAdmin } from '../redux/actions/authAction';
 
 const Register = () => {
     const {auth, alert} = useSelector(state => state);
@@ -9,7 +9,9 @@ const Register = () => {
     const history = useHistory();
 
      const initialState = { fullname: "", username: "", email: "", password: "", cf_password: "", gender: "male" };
-     const [userData, setUserData] = useState(initialState);
+    const [userData, setUserData] = useState(initialState);
+      const [userType, setUserType] = useState(false);
+  
      const { fullname, username, email, password, cf_password } = userData;
 
      const [typePass, setTypePass] = useState(false);
@@ -30,7 +32,10 @@ const Register = () => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(register(userData));
+      if (!userType) {
+        dispatch(register(userData));
+      }
+      dispatch(registerAdmin(userData));
     };
 
     return (
@@ -153,6 +158,32 @@ const Register = () => {
               {alert.cf_password ? alert.cf_password : ""}
             </small>
           </div>
+
+
+          <div className="d-flex justify-content-evenly  mx-0 mb-4">
+          <label htmlFor="User">
+            User:
+            <input
+              type="radio"
+              id="User"
+              name="role"
+              value="user"
+              defaultChecked
+                onClick={(e) => { handleChangeInput(e); setUserType(false)}}
+            />
+          </label>
+
+          <label htmlFor="Admin">
+            Admin:
+            <input
+              type="radio"
+              id="Admin"
+              name="role"
+              value="admin"
+              onClick={(e) => { handleChangeInput(e); setUserType(true)}}
+            />
+          </label>
+        </div>
 
           <div className="d-flex justify-content-evenly  mx-0 mb-1">
             <label htmlFor="male">
